@@ -16,8 +16,8 @@ qrApp.config(['$routeProvider', '$locationProvider',
                     controller: 'IndexCtrl'
                 })
                 .when('/form', {
-                    templateUrl: 'static/partials/main.html',
-                    controller: 'IndexCtrl'
+                    templateUrl: 'static/partials/form.html',
+                    controller: 'FormCtrl'
                 })
                 .when('/description', {
                     templateUrl: 'static/partials/main.html',

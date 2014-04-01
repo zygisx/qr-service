@@ -1,0 +1,13 @@
+<form class="form-horizontal" role="form" name="mainForm" novalidate>
+  <div class="form-group">
+    <label for="dataInput">Data</label>
+    <textarea ng-model="data" class="form-control" id="dataInput"
+              placeholder="Data"></textarea>
+  </div>
+  <button ng-click="submit()" type="button" class="btn btn-success">Submit</button>
+
+  <div ng-show="submitedData">
+  <img ng-src="api/encode?data={{ submitedData }}"/>
+  </div>
+
+</form>

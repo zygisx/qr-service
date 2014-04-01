@@ -1,6 +1,6 @@
 import os
 
-from flask import render_template, send_from_directory
+from flask import send_from_directory
 from flask import make_response
 
 from qr_service import app
