@@ -24,10 +24,6 @@ qrApp.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'static/partials/decode.html',
                     controller: 'DecodeCtrl'
                 })
-                .when('/description', {
-                    templateUrl: 'static/partials/api.html',
-                    controller: 'IndexCtrl'
-                })
                 .otherwise({
                     redirectTo: '/'
                 })
