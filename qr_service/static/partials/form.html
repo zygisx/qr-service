@@ -78,7 +78,7 @@
       <div class="col-sm-2 col-sm-offset-2">
         <label for="vat">PVM tarifas (%):</label>
         <input type="number" ng-model="item.vat" class="form-control" id="vat"
-               placeholder="" required/>
+               placeholder="" required min="0"  max="99"/>
       </div>
       <div class="col-sm-3 ">
         <label for="vatAmount">PVM suma (centais):</label>

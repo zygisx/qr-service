@@ -25,7 +25,7 @@ qrApp.config(['$routeProvider', '$locationProvider',
                     controller: 'DecodeCtrl'
                 })
                 .when('/description', {
-                    templateUrl: 'static/partials/main.html',
+                    templateUrl: 'static/partials/api.html',
                     controller: 'IndexCtrl'
                 })
                 .otherwise({
