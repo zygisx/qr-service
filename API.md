@@ -8,7 +8,7 @@ Visos operacijos atliekamos naudojant `HTTP POST` metodą.
 
 Norint gauti užkoduotą sąskaitą faktūra QR kodo pavidalu kviečiamas:
 
-  HTTP POST /api/encode
+>  HTTP POST /api/encode
 
 Kvietimo metu perduodami sąskaitos faktūros duomenys JSON tipo.
 
@@ -75,7 +75,7 @@ Antrasis būdas naudojamas jei QR kodo nuskaitymui naudojama specialiai tam skir
 
 Jei norime iškoduoti QR kodo atvaizdą kviečiame:
 
-  HTTP POST /api/decodeImage
+>  HTTP POST /api/decodeImage
 
 metodą, perduodami paveikslėlį PNG formatu.
 
@@ -83,7 +83,7 @@ metodą, perduodami paveikslėlį PNG formatu.
 
 Jei norime iškoduoti sąskaitų faktūrų duomenis, ir paveiksliukas buvo atkoduotas naudojant QR kodų skaitytuvą kviečiame:
 
-  HTTP POST /api/decode
+>  HTTP POST /api/decode
 
 Kviečiasdami perduodame JSON tipo objektą iš vieno lauko:
   - `data` - skaičių eilutė, gauta iškodavus QR kodo atvaizdą.
