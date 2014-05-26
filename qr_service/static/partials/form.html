@@ -1,13 +1,114 @@
-<form class="form-horizontal" role="form" name="mainForm" novalidate>
-  <div class="form-group">
-    <label for="dataInput">Data</label>
-    <textarea ng-model="data" class="form-control" id="dataInput"
-              placeholder="Data"></textarea>
+<form class="form-horizontal" role="form" name="mainForm" ng-submit="submit()">
+  <div class="form-inline col-sm-10">
+    <div class="form-group ">
+      <label for="errorCorrection" class="">Klaidų taisymo lygis:</label>
+      <select class="form-control " id="errorCorrection" ng-model="errorCorrection">
+        <option value="L">L - ištaiso iki 7% pažeisto kodo</option>
+        <option value="M">M - ištaiso iki 15% pažeisto kodo</option>
+        <option value="Q">Q - ištaiso iki 25% pažeisto kodo</option>
+        <option value="H">H - ištaiso iki 30% pažeisto kodo</option>
+      </select>
+    </div>
   </div>
-  <button ng-click="submit()" type="button" class="btn btn-success">Submit</button>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="dateInput">PVM išrašymo data:</label>
+      <input type="date" ng-model="signDate" class="form-control" id="dateInput"
+             placeholder="YYYY-MM-DD" required/>
+    </div>
+    <div class="col-sm-4 col-sm-offset-1">
+      <label for="purchaseDate">Sandorio data:</label>
+      <input type="date" ng-model="purchaseDate" class="form-control" id="purchaseDate"
+             placeholder="YYYY-MM-DD" required/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="serie">PVM sąskaitos faktūros serija:</label>
+      <input type="text" ng-model="invoiceSerie" class="form-control" id="serie"
+             placeholder="" pattern=".{3}" required title="Serijos numerį sudaro lygiai trys simboliai"/>
+    </div>
+    <div class="col-sm-4     col-sm-offset-1">
+      <label for="invoiceNumber">PVM sąskaitos faktūros numeris:</label>
+      <input type="number" ng-model="invoiceNumber" class="form-control" id="invoiceNumber"
+             required/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="provider">Pardavėjo ID informacinėje sistemoje:</label>
+      <input type="number" ng-model="providerId" class="form-control" id="provider"
+             placeholder="" required/>
+    </div>
+    <div class="col-sm-4     col-sm-offset-1">
+      <label for="receiver">Pirkėjo ID informacinėje sistemoje:</label>
+      <input type="number" ng-model="receiverId" class="form-control" id="receiver"
+             placeholder="" required/>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <hr>
+    </div>
+  </div>
+  <div ng-repeat="item in items">
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label for="itemId">Prekės ID:</label>
+        <input type="number" ng-model="item.id" class="form-control" id="itemId"
+               placeholder="" required/>
+      </div>
+      <div class="col-sm-2 ">
+        <label for="units">Vienetų skaičius:</label>
+        <input type="number" ng-model="units" class="form-control" id="units"
+               placeholder="" required/>
+      </div>
+      <div class="col-sm-2 ">
+        <label for="unitPrice">Vieneto kaina:</label>
+        <input type="number" ng-model="unitPrice" class="form-control" id="unitPrice"
+               placeholder="" required/>
+      </div>
+      <div class="col-sm-3 ">
+        <label for="taxableValue">Apmokestinamoji vertė:</label>
+        <input type="number" ng-model="taxableValue" class="form-control" id="taxableValue"
+               placeholder="" required/>
+      </div>
+    </div>
+    <div class="form-group" class="well">
+      <div class="col-sm-2 col-sm-offset-2">
+        <label for="vat">PVM tarifas:</label>
+        <input type="number" ng-model="vat" class="form-control" id="vat"
+               placeholder="" required/>
+      </div>
+      <div class="col-sm-2 ">
+        <label for="vatAmount">PVM suma:</label>
+        <input type="number" ng-model="vatAmount" class="form-control" id="vatAmount"
+               placeholder="" required/>
+      </div>
+      <div class="col-sm-3" style="margin-top: 25px">
+        <button ng-click="removeItem($index)" type="button" class="btn btn-sm btn-danger pull-right">Ištrinti prekę
+        </button>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <hr>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2 ">
+    <button ng-click="addItem()" type="button" class="btn btn-success">Pridėti prekę</button>
+  </div>
 
-  <div ng-show="submitedData">
-  <img ng-src="api/encode?data={{ submitedData }}"/>
+  <button type="submit" class="btn btn-success col-sm-3 col-sm-offset-4">Gauti QR kodą</button>
+
+  <div class="clearfix"></div>
+  <div ng-show="errorMessage" class="alert alert-danger" style="margin-top: 10px;">
+    {{ errorMessage }}
+  </div>
+
+  <div ng-show="qrImage">
+    <img src="data:image/png;base64,{{ qrImage }}"/>
   </div>
 
 </form>
