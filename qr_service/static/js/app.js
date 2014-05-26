@@ -4,7 +4,8 @@ var qrApp = angular.module('qrApp',[
         'ngRoute',
         'ngResource',
         'qrApp.Services',
-        'qrApp.Controllers'
+        'qrApp.Controllers',
+        'angularFileUpload'
     ]);
 
 
@@ -18,6 +19,10 @@ qrApp.config(['$routeProvider', '$locationProvider',
                 .when('/form', {
                     templateUrl: 'static/partials/form.html',
                     controller: 'FormCtrl'
+                })
+                .when('/decode', {
+                    templateUrl: 'static/partials/decode.html',
+                    controller: 'DecodeCtrl'
                 })
                 .when('/description', {
                     templateUrl: 'static/partials/main.html',

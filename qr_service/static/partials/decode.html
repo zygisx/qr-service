@@ -1,0 +1,112 @@
+<div class="alert alert-info">Galite arba įkelti QR kodo paveiksliūką PNG formatu arba įrašyti iškoduotus skaičius iš QR
+  kodo
+</div>
+
+<div class="form-group">
+  <label for="dateInput">Pasirinkite QR kodą PNG formatu:</label>
+  <span class="btn btn-default">
+    <input type="file" class="form-controls" ng-file-select="onUpload($files)"/>
+  </span>
+</div>
+
+<form class="form-horizontal" role="form" name="mainForm" ng-submit="submit()">
+  <div class="form-group col-sm-10">
+    <label for="data">Iškoduota skaičių eilutė:</label>
+    <textarea type="text" ng-model="data" class="form-control" id="data"
+              placeholder="" required></textarea>
+    <button class="btn btn-success pull-right" style="margin-top: 10px;">Iškoduoti</button>
+  </div>
+</form>
+
+<div class="clearfix"></div>
+<div ng-show="errorMessage" class="alert alert-danger" style="margin-top: 10px;">
+  {{ errorMessage }}
+</div>
+
+<hr>
+
+<div ng-show="showData">
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="dateInput">PVM išrašymo data:</label>
+      <input type="date" ng-model="signDate" class="form-control" id="dateInput"
+             readonly/>
+    </div>
+    <div class="col-sm-4 col-sm-offset-1">
+      <label for="purchaseDate">Sandorio data:</label>
+      <input type="date" ng-model="purchaseDate" class="form-control" id="purchaseDate"
+             readonly/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="serie">PVM sąskaitos faktūros serija:</label>
+      <input type="text" ng-model="invoiceSerie" class="form-control" id="serie"
+             readonly/>
+    </div>
+    <div class="col-sm-4     col-sm-offset-1">
+      <label for="invoiceNumber">PVM sąskaitos faktūros numeris:</label>
+      <input type="text" ng-model="invoiceNumber" class="form-control" id="invoiceNumber"
+             readonly/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="provider">Pardavėjo ID informacinėje sistemoje:</label>
+      <input type="text" ng-model="providerId" class="form-control" id="provider"
+             readonly/>
+    </div>
+    <div class="col-sm-4     col-sm-offset-1">
+      <label for="receiver">Pirkėjo ID informacinėje sistemoje:</label>
+      <input type="text" ng-model="receiverId" class="form-control" id="receiver"
+             readonly/>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <hr>
+    </div>
+  </div>
+  <div ng-repeat="item in items">
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label for="itemId">Prekės ID:</label>
+        <input type="text" ng-model="item.id" class="form-control" id="itemId"
+               readonly/>
+      </div>
+      <div class="col-sm-2 ">
+        <label for="units">Vienetų skaičius:</label>
+        <input type="text" ng-model="item.units" class="form-control" id="units"
+               readonly/>
+      </div>
+      <div class="col-sm-3 ">
+        <label for="unitPrice">Vieneto kaina (centais):</label>
+        <input type="text" ng-model="item.unitPrice" class="form-control" id="unitPrice"
+               readonly/>
+      </div>
+      <div class="col-sm-3 ">
+        <label for="taxableValue">Apmokestinama vertė (centais):</label>
+        <input type="text" ng-model="item.taxableValue" class="form-control" id="taxableValue"
+               readonly/>
+      </div>
+    </div>
+    <div class="form-group" class="well">
+      <div class="col-sm-2 col-sm-offset-2">
+        <label for="vat">PVM tarifas (%):</label>
+        <input type="text" ng-model="item.vat" class="form-control" id="vat"
+               readonly/>
+      </div>
+      <div class="col-sm-3 ">
+        <label for="vatAmount">PVM suma (centais):</label>
+        <input type="text" ng-model="item.vatAmount" class="form-control" id="vatAmount"
+               readonly/>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+

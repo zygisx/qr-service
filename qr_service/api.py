@@ -3,7 +3,7 @@ __author__ = "Zygimantas Gatelis"
 __email__ = "zygimantas.gatelis@cern.ch"
 
 from qr_service import app
-from qr_service.services import EncodeService
+from qr_service.services import EncodeService, DecodeService
 from flask.globals import request
 from flask.json import jsonify
 from flask.helpers import send_file
@@ -11,30 +11,12 @@ import qrcode
 from qrcode.image.pure import PymagingImage
 from StringIO import StringIO
 import base64
+import requests
 
 
 encode_service = EncodeService()
+decode_service = DecodeService()
 DEFAULT_ERROR_CORRECTION = qrcode.constants.ERROR_CORRECT_M
-
-
-@app.route('/api/encode', methods=["GET"])
-def encode():
-    # just a sample encoding
-    data = request.args.get('data')
-
-    print "Numbers:", data.isdigit()
-    print len(data)
-
-    img = qrcode.make(data, error_correction=qrcode.constants.ERROR_CORRECT_H,
-                      image_factory=PymagingImage)
-
-    output = StringIO()
-    img.save(output)
-
-    with open('pic.png', 'w') as fh:
-        fh.write(output.getvalue())
-    output.seek(0)
-    return send_file(output, mimetype='image/png')
 
 
 def get_error_correction_type(req):
@@ -46,7 +28,7 @@ def get_error_correction_type(req):
     else: return DEFAULT_ERROR_CORRECTION
 
 @app.route('/api/encode', methods=["POST"])
-def encodeBase64():
+def encode():
     # just a sample encoding
     req = request.json
 
@@ -67,27 +49,22 @@ def encodeBase64():
 
     return jsonify(image=encoded_string, msg="")
 
-@app.route('/api/test', methods=["GET"])
-def test():
-    # just a sample encoding
-    data = "QR kodas bakalauriniam darbui"
+@app.route('/api/decodeImage', methods=["POST"])
+def decodeImage():
+    file = request.files.values()[0]
 
-    img = qrcode.make(data, error_correction=qrcode.constants.ERROR_CORRECT_H,
-                      image_factory=PymagingImage)
-
-    output = StringIO()
-    img.save(output)
-
-    with open('pic.png', 'w') as fh:
-        fh.write(output.getvalue())
-    output.seek(0)
-    return send_file(output, mimetype='image/png')
-
-@app.route('/api/decode')
-def decode(**kwargs):
-
+    result = decode_service.decode_image(file)
     return jsonify(
+        result
+    )
 
+
+@app.route('/api/decode', methods=["POST"])
+def decode():
+    req = request.json
+    result = decode_service.decode(req["data"])
+    return jsonify(
+        result
     )
 
 

@@ -60,29 +60,29 @@
       </div>
       <div class="col-sm-2 ">
         <label for="units">Vienetų skaičius:</label>
-        <input type="number" ng-model="units" class="form-control" id="units"
-               placeholder="" required/>
-      </div>
-      <div class="col-sm-2 ">
-        <label for="unitPrice">Vieneto kaina:</label>
-        <input type="number" ng-model="unitPrice" class="form-control" id="unitPrice"
+        <input type="number" ng-model="item.units" class="form-control" id="units"
                placeholder="" required/>
       </div>
       <div class="col-sm-3 ">
-        <label for="taxableValue">Apmokestinamoji vertė:</label>
-        <input type="number" ng-model="taxableValue" class="form-control" id="taxableValue"
+        <label for="unitPrice">Vieneto kaina (centais):</label>
+        <input type="number" ng-model="item.unitPrice" class="form-control" id="unitPrice"
+               placeholder="" required/>
+      </div>
+      <div class="col-sm-3 ">
+        <label for="taxableValue">Apmokestinama vertė (centais):</label>
+        <input type="number" ng-model="item.taxableValue" class="form-control" id="taxableValue"
                placeholder="" required/>
       </div>
     </div>
     <div class="form-group" class="well">
       <div class="col-sm-2 col-sm-offset-2">
-        <label for="vat">PVM tarifas:</label>
-        <input type="number" ng-model="vat" class="form-control" id="vat"
+        <label for="vat">PVM tarifas (%):</label>
+        <input type="number" ng-model="item.vat" class="form-control" id="vat"
                placeholder="" required/>
       </div>
-      <div class="col-sm-2 ">
-        <label for="vatAmount">PVM suma:</label>
-        <input type="number" ng-model="vatAmount" class="form-control" id="vatAmount"
+      <div class="col-sm-3 ">
+        <label for="vatAmount">PVM suma (centais):</label>
+        <input type="number" ng-model="item.vatAmount" class="form-control" id="vatAmount"
                placeholder="" required/>
       </div>
       <div class="col-sm-3" style="margin-top: 25px">

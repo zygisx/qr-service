@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/css/main.css">
 
+  <script src="/static/lib/angular-file-upload-shim.min.js"></script>
   <script src="/static/lib/angular/angular.min.js"></script>
   <script src="/static/lib/angular/angular-resource.min.js"></script>
   <script src="/static/lib/angular/angular-route.min.js"></script>
@@ -17,6 +18,8 @@
 
   <script src="/static/lib/jquery/jquery-1.11.0.min.js"></script>
   <script src="/static/lib/bootstrap/bootstrap.min.js"></script>
+
+  <script src="/static/lib/angular-file-upload.js"></script>
 </head>
 <body>
 <div id="header" class="header navbar navbar-static-top">
@@ -24,13 +27,14 @@
 </div>
 <div class="container page">
   <div class="jumbotron">
-    <h1>QR code generator</h1>
+    <h1>QR kodo generatorius</h1>
 
-    <p>Service for generating QR codes from Lithuanian accounting information</p>
+    <p>Servisas skirtas kurti QR koda pagal Lietuvos sąskaitų faktūrų duomenis</p>
 
     <p>
-      <a class="btn btn-primary btn-lg" role="button" href="form">Form</a>
-      <a class="btn btn-primary btn-lg" role="button" href="description">API details</a>
+      <a class="btn btn-primary btn-lg" role="button" href="form">QR kodo kūrimas</a>
+      <a class="btn btn-primary btn-lg" role="button" href="decode">QR iškodavimas</a>
+      <a class="btn btn-primary btn-lg" role="button" href="description">API dokumentacija</a>
     </p>
 
     <div id="content" class="container main" ng-view>

@@ -7,11 +7,17 @@ qrAppServices.factory('Encode', function ($resource) {
     return $resource('/api/encode', {}, {
         image: {
             method: 'POST'
-            // headers: {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'}
         }
     });
-})
-;
+});
+
+qrAppServices.factory('Decode', function ($resource) {
+    return $resource('/api/decode', {}, {
+        decode: {
+            method: 'POST'
+        }
+    });
+});
 
 
 

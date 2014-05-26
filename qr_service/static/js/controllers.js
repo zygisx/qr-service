@@ -34,7 +34,6 @@ qrAppControllers.controller('FormCtrl', ['$scope', 'Encode',
         $scope.submit = function() {
 
             var encode = new Encode({
-                data: $scope.data,
                 date: $scope.signDate,
                 purchaseDate:  $scope.purchaseDate,
                 invoiceSerie:  $scope.invoiceSerie,
@@ -63,6 +62,66 @@ qrAppControllers.controller('FormCtrl', ['$scope', 'Encode',
         $scope.removeItem = function(index) {
             $scope.items.splice(index, 1);
         };
+
+    }
+]);
+
+qrAppControllers.controller('DecodeCtrl', ['$scope', 'Decode', '$upload',
+    function($scope, Decode, $upload) {
+        function renderResult(data) {
+            console.log(data);
+            $scope.signDate = data.date;
+            $scope.purchaseDate = data.purchaseDate;
+            $scope.invoiceSerie = data.invoiceSerie;
+            $scope.invoiceNumber = data.invoiceNumber;
+            $scope.providerId = data.providerId;
+            $scope.receiverId = data.receiverId;
+
+            $scope.items = [];
+            data.items.forEach(function(item) {
+                $scope.items.push({
+                    id: item.id,
+                    units: item.units,
+                    unitPrice: item.unitPrice,
+                    taxableValue: item.taxableValue,
+                    vat: item.vat,
+                    vatAmount: item.vatAmount
+                })
+            })
+
+            $scope.showData = true;
+        }
+
+        $scope.data = "";
+        $scope.showData = false;
+
+        $scope.onUpload = function($file) {
+        //$files: an array of files selected, each file has name, size, and type.
+
+          $scope.upload = $upload.upload({
+            url: 'api/decodeImage',
+            file: $file 
+          }).success(function(data, status, headers, config) {
+            // file is uploaded successfully
+            console.log(data);
+            renderResult(data);
+          });
+        };
+
+       $scope.submit = function() {
+            var decode = new Decode({
+                data: $scope.data
+            });
+            decode.$decode(function(resp) {
+                console.log(resp)
+                renderResult(resp)
+
+            }, function(error) {
+                $scope.errorMessage = "Klaida dekoduojant sąskaitą faktūrą.";
+            });
+
+
+       };
 
     }
 ]);

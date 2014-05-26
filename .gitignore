@@ -1,6 +1,7 @@
 ###Python###
 
 *.py[cod]
+*.pyc
 
 # C extensions
 *.so
@@ -57,3 +58,6 @@ coverage
 nohup.out
 
 logs
+
+src
+qr_service/static/fonts
