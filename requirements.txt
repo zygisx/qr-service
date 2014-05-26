@@ -11,8 +11,6 @@ six==1.3.0
 wsgiref==0.1.2
 qrcode==4.0.4
 
-gunicorn==17.5
-
 #fpdf
 
 #xhtml2pdf==0.0.6
