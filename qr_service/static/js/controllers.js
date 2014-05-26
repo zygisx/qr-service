@@ -100,7 +100,7 @@ qrAppControllers.controller('DecodeCtrl', ['$scope', 'Decode', '$upload',
 
           $scope.upload = $upload.upload({
             url: 'api/decodeImage',
-            file: $file 
+            file: $file
           }).success(function(data, status, headers, config) {
             // file is uploaded successfully
             console.log(data);
