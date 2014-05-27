@@ -105,6 +105,8 @@ qrAppControllers.controller('DecodeCtrl', ['$scope', 'Decode', '$upload',
             // file is uploaded successfully
             console.log(data);
             renderResult(data);
+          }).error(function(error) {
+                $scope.errorMessage = "Klaida dekoduojant sąskaitą faktūrą.";
           });
         };
 

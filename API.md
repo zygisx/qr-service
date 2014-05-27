@@ -23,11 +23,11 @@ Perduodami duomenys:
  - `receiverId` - pirkėjo unikalus identifikatorius (iki 13 skaitmenų)
  - `items` - prekių sąrašas :
     - `id` - prekės unikalus identifikatorius (iki 13 skaitmenų)
-    - `units` - prekės vienetų skaičius (iki 6 skaitmenų)
-    - `unitPrice` - prekės vieneto kaina centais (iki 8 skaitmenų)
-    - `taxableValue` - prekės apmokestinama verte centais (iki 8 skaitmenų)
+    - `units` - prekės vienetų skaičius (iki 7 skaitmenų)
+    - `unitPrice` - prekės vieneto kaina centais (iki 12 skaitmenų)
+    - `taxableValue` - prekės apmokestinama verte centais (iki 12 skaitmenų)
     - `vat` - pridėtinės vertės tarifas procentais (iki 2 skaitmenų)
-    - `vatAmount` - PVM suma centais (iki 8 skaitmenų)
+    - `vatAmount` - PVM suma centais (iki 12 skaitmenų)
 
 Pavyzdžiui:
 ```json
@@ -107,11 +107,11 @@ atkoduotos sąskaitos faktūros informacija:
    - `receiverId` - pirkėjo unikalus identifikatorius (iki 13 skaitmenų)
    - `items` - prekių sąrašas :
      - `id` - prekės unikalus identifikatorius (iki 13 skaitmenų)
-     - `units` - prekės vienetų skaičius (iki 6 skaitmenų)
-     - `unitPrice` - prekės vieneto kaina centais (iki 8 skaitmenų)
-     - `taxableValue` - prekės apmokestinama verte centais (iki 8 skaitmenų)
+     - `units` - prekės vienetų skaičius (iki 7 skaitmenų)
+     - `unitPrice` - prekės vieneto kaina centais (iki 12 skaitmenų)
+     - `taxableValue` - prekės apmokestinama verte centais (iki 12 skaitmenų)
      - `vat` - pridėtinės vertės tarifas procentais (iki 2 skaitmenų)
-     - `vatAmount` - PVM suma centais (iki 8 skaitmenų)
+     - `vatAmount` - PVM suma centais (iki 12 skaitmenų)
 
 Pavyzdžiui:
 ```json
