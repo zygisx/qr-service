@@ -14,6 +14,7 @@ Kvietimo metu perduodami sąskaitos faktūros duomenys JSON tipo.
 
 Perduodami duomenys:
 
+ - `errorCorrection` - klaidų taisymo lygis. Galimos reikšmės: L -mažas, M - vidutinis, Q - didelis, H - labai didelis. N umatytasis klaidų taisymo lygis M.
  - `date` - sąsakitos faktūros pasirašymo data formatu YYYY-MM-DD
  - `purchaseDate` - sandorio įvykdymo data formatu YYYY-MM-DD
  - `invoiceSerie` - sąskaitos faktūros serijos numeris (3 simboliai)
@@ -31,6 +32,7 @@ Perduodami duomenys:
 Pavyzdžiui:
 ```json
 {
+  "errorCorrection": "H",
   "date": "2014-05-26",
   "purchaseDate": "2014-05-26",
   "invoiceSerie": "ABC",
