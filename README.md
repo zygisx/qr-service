@@ -15,6 +15,8 @@ Service for generating QR codes from Lithuanian accounting information
 4. check out web page
 > http://localhost:5000/
 
+
+Service available [online](http://qr-service.herokuapp.com/)
 ***
 
 Servisas skirtas QR kodų generavimui iš Lietuvoje naudojamų PVM sąskaitų faktūrų informacijos.

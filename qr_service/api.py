@@ -66,3 +66,25 @@ def decode():
     return jsonify(
         result
     )
+
+
+@app.route('/api/test', methods=["GET"])
+def test():
+    data = request.args.get('data')
+    error_correction = request.args.get('errors')
+
+
+    if error_correction == 'L': error_correction_code = qrcode.constants.ERROR_CORRECT_L
+    elif error_correction == 'M': error_correction_code = qrcode.constants.ERROR_CORRECT_M
+    elif error_correction == 'Q': error_correction_code = qrcode.constants.ERROR_CORRECT_Q
+    elif error_correction == 'H': error_correction_code = qrcode.constants.ERROR_CORRECT_H
+    else: error_correction_code = DEFAULT_ERROR_CORRECTION
+
+
+    img = qrcode.make(data, error_correction=error_correction_code,
+                      image_factory=PymagingImage)
+
+    output = StringIO()
+    img.save(output)
+    output.seek(0)
+    return send_file(output, mimetype='image/png')

@@ -75,11 +75,11 @@ class EncodeService(object):
 
         for item in invoice.items:
             result += self.fill_leading_zeros(item.id, 13, "prekės id") + \
-                self.fill_leading_zeros(item.units, 6, "prekės vienetu skaičius") + \
-                self.fill_leading_zeros(item.unitPrice, 8, "prekės vieneto kaina") + \
-                self.fill_leading_zeros(item.taxableValue, 8, "prekės apmokestinama vertė") + \
+                self.fill_leading_zeros(item.units, 7, "prekės vienetu skaičius") + \
+                self.fill_leading_zeros(item.unitPrice, 12, "prekės vieneto kaina") + \
+                self.fill_leading_zeros(item.taxableValue, 12, "prekės apmokestinama vertė") + \
                 self.fill_leading_zeros(item.vat, 2, "pvm tarifas") + \
-                self.fill_leading_zeros(item.vatAmount, 8, "pvm suma")
+                self.fill_leading_zeros(item.vatAmount, 12, "pvm suma")
 
         if not result.isdigit():
             raise Exception("Non number value entered.")
@@ -136,14 +136,14 @@ class DecodeService(object):
         items_count = int(data[54:57])
         items = []
         for i in range(items_count):
-            pos = i*45
+            pos = i*58
             item = {}
             item["id"] = self.remove_leading_zeros(data[pos+57:pos+70])
-            item["units"] = self.remove_leading_zeros(data[pos+70:pos+76])
-            item["unitPrice"] = self.remove_leading_zeros(data[pos+76:pos+84])
-            item["taxableValue"] = self.remove_leading_zeros(data[pos+84:pos+92])
-            item["vat"] = self.remove_leading_zeros(data[pos+92:pos+94])
-            item["vatAmount"] = self.remove_leading_zeros(data[pos+94:pos+102])
+            item["units"] = self.remove_leading_zeros(data[pos+70:pos+77])
+            item["unitPrice"] = self.remove_leading_zeros(data[pos+77:pos+89])
+            item["taxableValue"] = self.remove_leading_zeros(data[pos+89:pos+101])
+            item["vat"] = self.remove_leading_zeros(data[pos+101:pos+103])
+            item["vatAmount"] = self.remove_leading_zeros(data[pos+103:pos+115])
             items.append(item)
 
         result["items"] = items
