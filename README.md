@@ -21,4 +21,4 @@ Servisas skirtas QR kodų generavimui iš Lietuvoje naudojamų PVM sąskaitų fa
 
 Servisas gali generuoti QR kodą iš sąskaitos faktūros duomenų ir iškoduoti QR kode užkoduotą sąskaitą faktūrą.
 
-Šį įranki galima naudoti tiek per web sąsają tie per REST API. [REST API instrukcija](https://github.com/zygisx/qr-service/blob/master/API.md)
+Šį įranki galima naudoti tiek per web sąsają tiek per REST API. [REST API instrukcija](https://github.com/zygisx/qr-service/blob/master/API.md)
