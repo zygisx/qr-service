@@ -32,7 +32,7 @@ Perduodami duomenys:
 Pavyzdžiui:
 ```json
 {
-  "errorCorrection": "H"
+  "errorCorrection": "H",
   "date": "2014-05-26",
   "purchaseDate": "2014-05-26",
   "invoiceSerie": "ABC",
