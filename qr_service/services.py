@@ -68,7 +68,7 @@ class EncodeService(object):
         result = str(invoice.date) + \
             str(invoice.purchaseDate) + \
             self.string_to_numbers(invoice.invoiceSerie) + \
-            self.fill_leading_zeros(invoice.invoiceNumber, 6, "sąskaitos numeris") + \
+            self.fill_leading_zeros(invoice.invoiceNumber, 30, "sąskaitos numeris") + \
             self.fill_leading_zeros(invoice.provider, 13, "pardavėjas") + \
             self.fill_leading_zeros(invoice.receiver, 13, "pirkėjas") + \
             self.fill_leading_zeros(len(invoice.items), 3, "prekių skaičius")
@@ -129,21 +129,21 @@ class DecodeService(object):
         result["date"] = self.decode_date(data[0:8])
         result["purchaseDate"] = self.decode_date(data[8:16])
         result["invoiceSerie"] = self.numbers_to_string(data[16:22])
-        result["invoiceNumber"] = self.remove_leading_zeros(data[22:28])
-        result["providerId"] = self.remove_leading_zeros(data[28:41])
-        result["receiverId"] = self.remove_leading_zeros(data[41:54])
+        result["invoiceNumber"] = self.remove_leading_zeros(data[22:52])
+        result["providerId"] = self.remove_leading_zeros(data[52:65])
+        result["receiverId"] = self.remove_leading_zeros(data[65:78])
 
-        items_count = int(data[54:57])
+        items_count = int(data[78:81])
         items = []
         for i in range(items_count):
             pos = i*58
             item = {}
-            item["id"] = self.remove_leading_zeros(data[pos+57:pos+70])
-            item["units"] = self.remove_leading_zeros(data[pos+70:pos+77])
-            item["unitPrice"] = self.remove_leading_zeros(data[pos+77:pos+89])
-            item["taxableValue"] = self.remove_leading_zeros(data[pos+89:pos+101])
-            item["vat"] = self.remove_leading_zeros(data[pos+101:pos+103])
-            item["vatAmount"] = self.remove_leading_zeros(data[pos+103:pos+115])
+            item["id"] = self.remove_leading_zeros(data[pos+81:pos+94])
+            item["units"] = self.remove_leading_zeros(data[pos+94:pos+101])
+            item["unitPrice"] = self.remove_leading_zeros(data[pos+101:pos+113])
+            item["taxableValue"] = self.remove_leading_zeros(data[pos+113:pos+125])
+            item["vat"] = self.remove_leading_zeros(data[pos+125:pos+127])
+            item["vatAmount"] = self.remove_leading_zeros(data[pos+127:pos+138])
             items.append(item)
 
         result["items"] = items

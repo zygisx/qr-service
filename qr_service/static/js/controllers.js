@@ -19,6 +19,9 @@ qrAppControllers.controller('FormCtrl', ['$scope', 'Encode',
                 month="0" + month;
             };
             var day = d.getDate();
+            if (day<10){
+                day="0" + day;
+            }
             return year + "-" + month + "-" + day;
         }
 
@@ -42,7 +45,6 @@ qrAppControllers.controller('FormCtrl', ['$scope', 'Encode',
                 receiverId: $scope.receiverId,
                 items: $scope.items
             });
-            console.log($scope.items)
 
             encode.$image(function(resp) {
                 $scope.qrImage = resp.image;
