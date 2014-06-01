@@ -43,7 +43,8 @@ qrAppControllers.controller('FormCtrl', ['$scope', 'Encode',
                 invoiceNumber: $scope.invoiceNumber,
                 providerId: $scope.providerId,
                 receiverId: $scope.receiverId,
-                items: $scope.items
+                items: $scope.items,
+                errorCorrection: $scope.errorCorrection
             });
 
             encode.$image(function(resp) {
